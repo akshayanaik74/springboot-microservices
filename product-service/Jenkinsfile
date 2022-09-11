@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh /etc/profile.d/gradle.sh
-                sh 'gradle assemble'
+                sh '/opt/gradle/gradle-6.5.1/bin/gradle assemble'
             }
         }
  //       stage('Test') {
@@ -14,12 +13,12 @@ pipeline {
  //       }
         stage('Build Docker image') {
             steps {
-                sh 'gradle docker'
+                sh '/opt/gradle/gradle-6.5.1/bin/gradle docker'
             }
         }
         stage('Run Docker Image') {
             steps {
-                sh 'gradle dockerRun'
+                sh '/opt/gradle/gradle-6.5.1/bin/gradle dockerRun'
             }
         }
     }
