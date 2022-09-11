@@ -30,6 +30,9 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
+      testCompile('org.junit.jupiter:junit-jupiter-api:5.4.0')
+  testRuntime('org.junit.jupiter:junit-jupiter-engine:5.4.0')
+  testRuntime('org.junit.vintage:junit-vintage-engine:5.4.0')
 }
 
 dependencyManagement {
