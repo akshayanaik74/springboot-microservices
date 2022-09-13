@@ -33,12 +33,6 @@
 ## Dockerize your microservices
 It is essential in microservice environment to containerize the build using Docker.
 
-### Docker Installation
-Docker can be installed on Mac using Brew:-
-```
-brew install --cask docker
-```
-You should be able to use Docker CLI commands such as `docker` and `docker-compose` after installation.
 
 ### Dockerfile
 Added `Dockerfile` in each microservice to provide configuration to build and run docker image.
@@ -70,43 +64,14 @@ You can execute following commands to bring all the services down:-
 $springboot-microservices > docker-compose down
 ```
 
-### Remote Docker Hub
-You can create a [DockerHub](https://www.docker.com/get-started) account to push local docker images to remote docker hub repository
-1. To login to remote DockerHub account:-
-    ```
-    $any_path > docker login
-    ```
-2. To tag local docker image to remote docker image:-
-    ```
-    $any_path > docker tag com.example/product-service:latest aklahoti/product-service/0.0.1
-    ```
-3. To push image to remote docker hub repository:-
-    ```
-    $any_path > docker image push aklahoti/product-service:0.0.1 
-    ```
 
 ## CI/CD pipeline proposal
 It is essential to automate the continuous integration and continuous deployment (CI/CD) in microservice environment. For this we have:-
 
-1. Added gradle plugins to build and run docker image using gradle tasks
-    ```
-    plugins {
-        id 'com.palantir.docker' version '0.26.0'
-        id 'com.palantir.docker-run' version '0.26.0'
-    }
-    ```
-   You should be able to run `:docker` and `:dockerRun` gradle tasks for each microservice after adding the plugins.
-2. Added `Jenkinsfile` in each microservice to build Jenkins pipeline such as build, test, build and push docker image using the Gradle tasks.
+Added `Jenkinsfile` in each microservice to build Jenkins pipeline such as build, test, build and push docker image using the Gradle tasks.
 
 ## Deploy Microservice to Kubernetes (K8S)
-### Install K8S
-K8S can be installed on Mac using Brew:-
-```
-brew install kubectl
-```
-You should be able to use K8S CLI commands `kubectl` after installation.
 
-### deployment.yml
 Added `deployment.yml` in each microservice to provide configuration for kubernetes load-balancer service, deployment, pod and container.
 
 To deploy docker image of `product-service` in K8S cluster, Goto the project's root location, where you have `application.yml` and run following command:-
